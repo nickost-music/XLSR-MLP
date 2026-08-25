@@ -18,6 +18,6 @@ El sistema divide el proceso de detección en dos fases:
 ├── extract_features.py   # Extracción de embeddings XLS-R y guardado en .npz
 ├── train_mlp.py          # Entrenamiento del MLP y calibración de umbral
 ├── requirements.txt      # Dependencias del proyecto
-├── pesos/
-│   └── modelo.pth        # Pesos entrenados, media/desv de normalización y umbral (~2 MB)
+├── models/
+│   └── mlp_antispoofing_spanish.pth       # Pesos entrenados, media/desv de normalización y umbral (~2 MB)
 └── README.md
