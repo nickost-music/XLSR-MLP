@@ -2,7 +2,7 @@
 An antispoofing audio detector that uses representations extracted from XLS-R 300M model and uses a MLP trained on the HISPASPoof dataset.
 ---
 
-## 📌 Descripción del Proyecto
+## Descripción:
 
 El sistema divide el proceso de detección en dos fases:
 1. **Extracción de Características (Front-end):** Utiliza el modelo preentrenado `facebook/wav2vec2-xls-r-300m`. A cada audio se le aplica una neutralización de fondo (inyección de ruido a SNR fijo de 36 dB) para evitar sesgos de grabación, y se genera un vector de **2048 dimensiones** mediante la concatenación de la media y la desviación típica a nivel de trama considerando la máscara de atención.
@@ -11,7 +11,7 @@ El sistema divide el proceso de detección en dos fases:
 
 ---
 
-## 📂 Estructura del Repositorio
+## Tree of documents:
 
 ```text
 .
