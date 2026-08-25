@@ -1,14 +1,17 @@
 import os
-
 import numpy as np
 import pandas as pd
 import torch
 import torchaudio
 from transformers import Wav2Vec2FeatureExtractor, Wav2Vec2Model
 
-RUTA_BASE = "A:/HISPASpoof_Project"
-DETECCION = os.path.join(RUTA_BASE, "raw_audio", "detection")
-SALIDA = os.path.join(RUTA_BASE, "embeddings_neutralizado")
+"""Ruta a la carpeta del proyecto, donde se encuentran todos los archivos y base de datos, a rellenar"""
+RUTA_BASE = ""
+
+"""Ruta a la carpeta de los audios de al base de datos, a rellenar"""
+CARPETA_AUDIOS = os.path.join(RUTA_BASE, "", "")
+"""Salida del archivo con la información de todas las características de todos los audios de la carpeta, a rellenar"""
+SALIDA = os.path.join(RUTA_BASE, "")
 MODELO = "facebook/wav2vec2-xls-r-300m"
 SR, SNR_DB, LOTE = 16000, 36.0, 8
 
@@ -60,14 +63,14 @@ def vectorizar(ondas):
 
 def procesar(split):
     """Extrae un split completo y lo guarda como un unico .npz."""
-    tabla = pd.read_csv(os.path.join(DETECCION, "protocols",
+    tabla = pd.read_csv(os.path.join(CARPETA_AUDIOS, "protocols",
                                      f"{split}_metadata.csv"))
-    carpeta = os.path.join(DETECCION, split) #Carpeta del split (train,test,val)
+    carpeta = os.path.join(CARPETA_AUDIOS, split) #Carpeta del split (train,test,val)
     vectores, lote = [], [] #Inicializacion de los dos vectores
 
-    #Coge los fichero 1 por 1 y los vectoriza. Lee la onda y la guarda en lote[]. Si . Cuando termina, reinicia lote[]
+    #Coge los fichero 1 por 1 y los vectoriza. Lee la onda y la guarda en lote[]. Cuando termina, reinicia lote[]
     for fichero in tabla.filename:
-        lote.append(neutralizar(cargar(os.path.join(carpeta, fichero)))) #append pone un objeto al final de la lista.
+        lote.append(neutralizar(cargar(os.path.join(carpeta, fichero))))
         if len(lote) == LOTE:
             vectores.append(vectorizar(lote))
             lote = []

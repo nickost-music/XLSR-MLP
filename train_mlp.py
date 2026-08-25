@@ -15,9 +15,10 @@ import torch
 import torch.nn as nn
 from sklearn.metrics import roc_curve
 
-RUTA_BASE = "A:/HISPASpoof_Project"
-DIR_EMB = os.path.join(RUTA_BASE, "embeddings_neutralizado")
-DIR_PESOS = os.path.join(RUTA_BASE, "pesos")
+
+RUTA_BASE = ""      # ruta raiz del proyecto
+DIR_EMB = os.path.join(RUTA_BASE, "")      # carpeta de embeddings neutralizados
+DIR_PESOS = os.path.join(RUTA_BASE, "")    # carpeta de salida de los pesos
 
 EPOCAS = 7
 LOTE = 256
